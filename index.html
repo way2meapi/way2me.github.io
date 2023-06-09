@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+    <title>Way2Me</title>
+</head>
+
+<body>
+
+    <script>
+        // API endpoint
+        var apiURL = "https://app.fleettrack.co.in/api/get_vehicles?token=yogaharikaran_6S5I95gekPO3gyBLkzn2DT0iv4Ht8FV7&email=yogaharikaran@gmail.com";
+    
+        // Make an HTTP GET request
+        fetch(apiURL)
+          .then(response => response.json())
+          .then(data => {
+            // Extract latitude and longitude
+            var latitude = data[0].latitude;
+            var longitude = data[0].longitude;
+    
+            // Display coordinates on the HTML page
+            document.getElementById("outermap").innerHTML='<iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=625&amp;height=588&amp;hl=en&amp;q='+latitude+'° N, '+longitude+'° E&amp;t=h&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><style>.mapouter{position:relative;text-align:right;width:100%;height:588px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:588px;}.gmap_iframe {height:588px!important;}</style>'
+
+          })
+          .catch(error => {
+            console.error("Error:", error);
+          });
+      </script>
+
+
+
+
+<div id="outermap"></div>
+ 
+
+</body>
+</html>
